@@ -1,5 +1,8 @@
 ﻿using CvBuilderDev.Data;
+using CvBuilderDev.Repositories;
+using CvBuilderDev.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +16,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("DBConnection")));
 
+builder.Services.AddScoped<IHeaderService, HeaderService>();
+builder.Services.AddScoped<IHeaderRepository, HeaderRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -1,4 +1,5 @@
 ﻿using System;
+using CvBuilderDev.Areas.Models;
 using CvBuilderDev.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,6 +22,14 @@ namespace CvBuilderDev.Areas.Controllers
 			var header = await _headerService.GetHeader(email);
 			return Ok(header);
 		}
-	}
+
+        [HttpPost]
+        [Route("create")]
+        public async Task<IActionResult> New([FromBody] HeaderViewModel model)
+        {
+            await _headerService.CreateHeader(model);
+            return Ok();
+        }
+    }
 }
 

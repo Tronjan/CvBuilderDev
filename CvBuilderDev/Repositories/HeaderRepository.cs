@@ -7,6 +7,7 @@ namespace CvBuilderDev.Repositories
 {
     public interface IHeaderRepository
     {
+        Task CreateHeader(HeaderModel newHeader);
         Task<HeaderModel> GetHeader(string email);
     }
 	public class HeaderRepository : IHeaderRepository
@@ -18,6 +19,11 @@ namespace CvBuilderDev.Repositories
             _db = context;
         }
 
+        public async Task CreateHeader(HeaderModel newHeader)
+        {
+            await _db.Header.AddAsync(newHeader);
+            await _db.SaveChangesAsync();
+        }
 
         public async Task<HeaderModel> GetHeader(string email)
         {
