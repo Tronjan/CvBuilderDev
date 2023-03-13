@@ -1,17 +1,25 @@
 ﻿using System;
+using CvBuilderDev.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CvBuilderDev.Areas.Controllers
 {
+	[ApiController]
+	[Route("api/[Controller]")]
 	public class HeaderController : Controller
 	{
-		public HeaderController()
+		private readonly IHeaderService _headerService;
+		public HeaderController(IHeaderService headerService)
 		{
+			_headerService = headerService;
 		}
 
-		public async Task<IActionResult> Get()
+		[HttpGet]
+		[Route("get")]
+		public async Task<IActionResult> Get([FromQuery] string email)
 		{
-			return Ok();
+			var header = await _headerService.GetHeader(email);
+			return Ok(header);
 		}
 	}
 }
