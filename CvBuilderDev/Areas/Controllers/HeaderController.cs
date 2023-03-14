@@ -25,11 +25,13 @@ namespace CvBuilderDev.Areas.Controllers
 
         [HttpPost]
         [Route("create")]
-        public async Task<IActionResult> New([FromBody] HeaderViewModel model)
+        public async Task<IActionResult> NewOrUpdate([FromBody] HeaderViewModel model)
         {
-            await _headerService.CreateHeader(model);
-            return Ok();
+			await _headerService.CreateOrUpdateHeader(model);
+			return Ok();
         }
+
+
     }
 }
 

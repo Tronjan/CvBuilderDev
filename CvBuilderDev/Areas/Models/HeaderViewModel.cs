@@ -5,6 +5,7 @@ namespace CvBuilderDev.Areas.Models
 {
 	public class HeaderViewModel
 	{
+		[Key]
 		public int Id { get; set; }
 
 		[Required]

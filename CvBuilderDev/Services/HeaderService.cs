@@ -7,7 +7,7 @@ namespace CvBuilderDev.Services
 {
 	public interface IHeaderService
 	{
-        Task CreateHeader(HeaderViewModel model);
+        Task CreateOrUpdateHeader(HeaderViewModel model);
         Task<HeaderViewModel> GetHeader(string email);
 
     }
@@ -19,20 +19,9 @@ namespace CvBuilderDev.Services
 			_headerRepository = headerRepository;
 		}
 
-        public async Task CreateHeader(HeaderViewModel model)
-        {
-			var newHeader = new HeaderModel
-			{
-				FirstName = model.FirstName,
-				LastName = model.LastName,
-				Email = model.Email,
-				Phonenumber = model.Phonenumber,
-				LinkedInId = model.LinkedInId,
-				City = model.City,
-				ProfilePicture = model.ProfilePicture
-			};
-
-			await _headerRepository.CreateHeader(newHeader);
+        public async Task CreateOrUpdateHeader(HeaderViewModel model)
+        {	
+			await _headerRepository.CreateOrUpdateHeader(model);
         }
 
         public async Task<HeaderViewModel> GetHeader(string email)
@@ -40,6 +29,7 @@ namespace CvBuilderDev.Services
             var headerData = await _headerRepository.GetHeader(email);
 			var newHeaderData = new HeaderViewModel()
 			{
+				Id = headerData.Id,
 				FirstName = headerData.FirstName,
 				LastName = headerData.LastName,
 				Email = headerData.Email,
