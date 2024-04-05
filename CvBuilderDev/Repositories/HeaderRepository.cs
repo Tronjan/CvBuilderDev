@@ -24,7 +24,7 @@ namespace CvBuilderDev.Repositories
             await _db.Header.AddAsync(newHeader);
             await _db.SaveChangesAsync();
         }
-
+        
         public async Task<HeaderModel> GetHeader(string email)
         {
             return await _db.Header.Where(x => x.Email == email).FirstOrDefaultAsync();

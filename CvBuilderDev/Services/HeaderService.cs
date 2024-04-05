@@ -7,10 +7,10 @@ namespace CvBuilderDev.Services
 {
 	public interface IHeaderService
 	{
-        Task CreateHeader(HeaderViewModel model);
-        Task<HeaderViewModel> GetHeader(string email);
+		Task CreateHeader(HeaderViewModel model);
+		Task<HeaderViewModel> GetHeader(string email);
 
-    }
+	}
 	public class HeaderService : IHeaderService
 	{
 		private readonly IHeaderRepository _headerRepository;
@@ -19,8 +19,8 @@ namespace CvBuilderDev.Services
 			_headerRepository = headerRepository;
 		}
 
-        public async Task CreateHeader(HeaderViewModel model)
-        {
+		public async Task CreateHeader(HeaderViewModel model)
+		{
 			var newHeader = new HeaderModel
 			{
 				FirstName = model.FirstName,
@@ -33,11 +33,11 @@ namespace CvBuilderDev.Services
 			};
 
 			await _headerRepository.CreateHeader(newHeader);
-        }
+		}
 
-        public async Task<HeaderViewModel> GetHeader(string email)
+		public async Task<HeaderViewModel> GetHeader(string email)
 		{
-            var headerData = await _headerRepository.GetHeader(email);
+			var headerData = await _headerRepository.GetHeader(email);
 			var newHeaderData = new HeaderViewModel()
 			{
 				FirstName = headerData.FirstName,
@@ -49,7 +49,6 @@ namespace CvBuilderDev.Services
 				ProfilePicture = headerData.ProfilePicture
 			};
 			return newHeaderData;
-		} 
+		}
 	}
 }
-
