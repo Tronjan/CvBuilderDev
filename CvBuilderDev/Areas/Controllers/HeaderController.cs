@@ -15,7 +15,7 @@ namespace CvBuilderDev.Areas.Controllers
 			_headerService = headerService;
 		}
 
-		[HttpGet]
+		[HttpPost]
 		[Route("get")]
 		public async Task<IActionResult> Get([FromQuery] string email)
 		{

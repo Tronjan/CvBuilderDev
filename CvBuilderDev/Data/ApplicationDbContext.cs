@@ -12,6 +12,7 @@ namespace CvBuilderDev.Data
         }
 
         public DbSet<HeaderModel> Header { get; set; }
+        public DbSet<UserModel> User { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
