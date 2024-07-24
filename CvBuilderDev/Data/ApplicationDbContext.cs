@@ -13,6 +13,8 @@ namespace CvBuilderDev.Data
 
         public DbSet<HeaderModel> Header { get; set; }
 
+        public DbSet<WorkExperienceModel> WorkExperience { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
