@@ -4,13 +4,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CvBuilderDev.Data.Models
 {
-	public class HeaderModel
+	public class UserDetailsModel
 	{
         [Key]
         public int Id { get; set; }
 
         [ForeignKey("Users")]
-        public int userId { get; set; }
+        public int UserId { get; set; }
 
         [Required]
         public string FirstName { get; set; }
@@ -21,13 +21,10 @@ namespace CvBuilderDev.Data.Models
         [Required]
         public string Email { get; set; }
 
-        public string Phonenumber { get; set; }
+        public DateTime CreatedDateTime { get; set; } = DateTime.UtcNow;
 
-        public string LinkedInId { get; set; }
+        public DateTime UpdatedDateTime { get; set; } = DateTime.UtcNow;
 
-        public string City { get; set; }
-
-        public string ProfilePicture { get; set; }
 
         //nav
 

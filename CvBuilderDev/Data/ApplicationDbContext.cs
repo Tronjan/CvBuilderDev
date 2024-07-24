@@ -15,11 +15,24 @@ namespace CvBuilderDev.Data
 
         public DbSet<WorkExperienceModel> WorkExperience { get; set; }
 
+        public DbSet<UserModel> Users { get; set; }
+
+        public DbSet<UserDetailsModel> UserDetails { get; set; }
+
+        public DbSet<RefreshToken> RefreshToken { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            // Code to seed data
+            modelBuilder.Entity<WorkExperienceModel>()
+                 .HasKey(x => x.Id);
+
+            modelBuilder.Entity<UserModel>()
+                .HasKey(x => x.Id);
+
+            modelBuilder.Entity<UserDetailsModel>()
+                .HasKey(x => x.Id);
         }
     }
 }

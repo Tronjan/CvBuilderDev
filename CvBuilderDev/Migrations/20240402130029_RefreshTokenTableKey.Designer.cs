@@ -4,6 +4,7 @@ using CvBuilderDev.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CvBuilderDev.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240402130029_RefreshTokenTableKey")]
+    partial class RefreshTokenTableKey
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,7 +68,7 @@ namespace CvBuilderDev.Migrations
 
                     b.HasIndex("userId");
 
-                    b.ToTable("Header", (string)null);
+                    b.ToTable("Header");
                 });
 
             modelBuilder.Entity("CvBuilderDev.Data.Models.RefreshToken", b =>
@@ -93,7 +96,7 @@ namespace CvBuilderDev.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("RefreshToken", (string)null);
+                    b.ToTable("RefreshToken");
                 });
 
             modelBuilder.Entity("CvBuilderDev.Data.Models.UserDetailsModel", b =>
@@ -129,7 +132,7 @@ namespace CvBuilderDev.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserDetails", (string)null);
+                    b.ToTable("UserDetails");
                 });
 
             modelBuilder.Entity("CvBuilderDev.Data.Models.UserModel", b =>
@@ -156,7 +159,7 @@ namespace CvBuilderDev.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("CvBuilderDev.Data.Models.WorkExperienceModel", b =>
@@ -224,7 +227,7 @@ namespace CvBuilderDev.Migrations
 
                     b.HasIndex("userId");
 
-                    b.ToTable("WorkExperience", (string)null);
+                    b.ToTable("WorkExperience");
                 });
 
             modelBuilder.Entity("CvBuilderDev.Data.Models.HeaderModel", b =>

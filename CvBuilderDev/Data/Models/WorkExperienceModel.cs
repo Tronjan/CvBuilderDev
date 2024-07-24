@@ -4,10 +4,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CvBuilderDev.Data.Models
 {
-	public class WorkExperienceModel
-	{
+    public class WorkExperienceModel
+    {
         [Key]
         public int Id { get; set; }
+
+
+        [ForeignKey("Users")]
+        public int userId { get; set; }
 
         [Required]
         [MaxLength(20)]
@@ -25,11 +29,29 @@ namespace CvBuilderDev.Data.Models
         [Required]
         public string Location { get; set; }
 
-        [NotMapped]
-        public List<string> Description { get; set; }
+        [MaxLength(30)]
+        public string Description1 { get; set; }
 
-        [NotMapped]
-        public List<string> Tags { get; set; }
+        [MaxLength(30)]
+        public string Description2 { get; set; }
+
+        [MaxLength(10)]
+        public string Tag1 { get; set; }
+
+        [MaxLength(10)]
+        public string Tag2 { get; set; }
+
+        [MaxLength(10)]
+        public string Tag3 { get; set; }
+
+        [MaxLength(10)]
+        public string Tag4 { get; set; }
+
+
+        // nav
+
+        public virtual UserModel Users { get; set; }
+
     }
 }
 
